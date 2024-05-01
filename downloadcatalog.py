@@ -85,5 +85,24 @@ def main():
     save_data_to_csv(all_course_data, "catalog.csv")
 
 
+
+
+data = pd.read_csv("/Users/shivkapoor/Documents/catalog.csv")
+print(data.head())
+print(data.info())
+
+unique_courses = data.drop_duplicates(subset=['department', 'course_title'])
+department_table = unique_courses.groupby('department').size()
+department_table = department_table.reset_index()
+department_table.columns = ['Department', 'Course Count']
+
+department_table.to_csv("/Users/shivkapoor/Documents/department.csv", index=True)
+
+max_courses = department_table['Course Count'].max()
+max_department = department_table[department_table['Course Count'] == max_courses]
+print(max_department)
+
+
+
 if __name__ == "__main__":
     main()
