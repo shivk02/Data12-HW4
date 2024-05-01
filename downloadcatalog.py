@@ -82,7 +82,7 @@ def main():
         course_data = get_course_info(url)
         all_course_data.extend(course_data)
         time.sleep(3)
-    save_data_to_csv(all_course_data, "courses.csv")
+    save_data_to_csv(all_course_data, "catalog.csv")
 
 
 if __name__ == "__main__":
